@@ -1,0 +1,215 @@
+characters [0]
+  info
+    name = James
+    tier n = 1
+    rank n = 1
+    species = human
+    faction = admech
+    archetype = skitarii
+    xpTotal n = 100
+    currentXp n = 0
+    keywords = imperium
+    objectives = objectives
+    background = background
+    description = description
+    injuries = injuries
+    mutations = mutations
+    notes = notes
+  attributes
+    strength n = 1
+    toughness n = 2
+    agility n = 3
+    initiative n = 4
+    willpower n = 5
+    intellect n = 6
+    fellowship n = 7
+  skills
+    athletics n = 1
+    awareness n = 2
+    ballisticSkill n = 3
+    cunning n = 4
+    deception n = 5
+    insight n = 6
+    intimidation n = 7
+    investigation n = 8
+    leadership n = 9
+    medicae n = 10
+    persuasion n = 11
+    pilot n = 12
+    psychicMastery n = 13
+    scholar n = 14
+    stealth n = 15
+    survival n = 16
+    techUse n = 17
+    weaponSkill n = 18
+  traits
+    wounds n = 1
+    shock n = 2
+    defense n = 3
+    resilience n = 4
+    conviction n = 5
+    resolve n = 6
+    influence n = 7
+    wealth n = 8
+    corruption n = 9
+    faith n = 10
+  armor [0]
+    name = Rasrius
+    ar n = 5
+    traits = traits
+  weapons [0]
+    name = Chainsword
+    damage n = 1
+    ed n = 2
+    ap n = 3
+    salvo n
+    rangeShort n
+    rangeMedium n
+    rangeLong n
+    traits = traits
+  weapons [1]
+    name = Laspistol
+    damage n = 1
+    ed n = 2
+    ap n = 3
+    salvo n = 4
+    rangeShort n = 10
+    rangeMedium n = 20
+    rangeLong n = 30
+    traits = traits
+  psychicPowers [0]
+    name = Smite
+    dn = 3
+    activation
+    duration
+    range
+    target
+    effect = effect
+  talents [0]
+    name = fast
+    cost n = 20
+    descrtption = description
+
+
+
+
+
+
+
+
+
+
+
+{
+  "characters": [
+    {
+      "info": {
+        "name": "James",
+        "tier": 1,
+        "rank": 1,
+        "species": "human",
+        "faction": "admech",
+        "archetype: "skitarii",
+        "xpTotal": 100,
+        "currentXp": 0,
+        "keywords": "imperium",
+        "objectives": "objectives",
+        "background": "background",
+        "description": "description",
+        "injuries": "injuries",
+        "mutations": "mutations",
+        "notes": "notes"
+      },
+      "attributes": {
+        "strength": 1,
+        "toughness": 2,
+        "agility": 3,
+        "initiative": 4,
+        "willpower": 5,
+        "intellect": 6,
+        "fellowship": 7
+      },
+      "skills": {
+        "athletics": 1,
+        "awareness": 2,
+        "ballisticSkill": 3,
+        "cunning": 4,
+        "deception": 5,
+        "insight": 6,
+        "intimidation": 7,
+        "investigation": 8,
+        "leadership": 9,
+        "medicae": 10,
+        "persuasion": 11,
+        "pilot": 12,
+        "psychicMastery": 13,
+        "scholar": 14,
+        "stealth": 15,
+        "survival": 16,
+        "techUse": 17,
+        "weaponSkill": 18
+      },
+      "traits": {
+        "wounds": 1,
+        "shock": 2,
+        "defense": 3,
+        "resilience": 4,
+        "conviction": 5,
+        "resolve": 6,
+        "influence": 7,
+        "wealth": 8,
+        "corruption": 9,
+        "faith": 10
+      },
+      "armor": [
+        {
+          "name": "Rasrius",
+          "ar": 5,
+          "traits": "traits"
+        }
+      ],
+      "weapons": [
+        {
+          "name": "Chainsword",
+          "damage": 1,
+          "ed": 2,
+          "ap": 3,
+          "salvo": 0,
+          "rangeShort": 0,
+          "rangeMedium": 0,
+          "rangeLong": 0,
+          "traits": "traits"
+        },
+        {
+          "name": "Laspistol",
+          "damage": 1,
+          "ed": 2,
+          "ap": 3,
+          "salvo": 4,
+          "rangeShort": 10,
+          "rangeMedium": 20,
+          "rangeLong": 30,
+          "traits": "traits"
+        }
+      ],
+      "psychicPowers": [
+        {
+          "name": "Smite",
+          "dn": "3",
+          "activation": {},
+          "duration": {},
+          "range": {},
+          "target": {},
+          "effect": "effect"
+        }
+      ],
+      "talents": [
+        {
+          "name": "fast",
+          "cost": 20,
+          "descrtption": "description"
+        }
+      ]
+    }
+  ]
+}
