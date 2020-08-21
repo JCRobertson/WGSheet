@@ -12,7 +12,10 @@ export default function CombatScreen(props) {
     id: uuid(),
     value: { w },
   }));
-  let powers = props.character.psychicPowers;
+  let powers = props.character.psychicPowers.map((p) => ({
+    id: uuid(),
+    value: { p },
+  }));
   let powersDivider;
   if (powers) {
     powersDivider = (
@@ -30,11 +33,11 @@ export default function CombatScreen(props) {
           Weapons
         </TitleText>
         {weapons.map((w) => (
-          <WeaponCard weapon={w.value.w} myKey={w.id} />
+          <WeaponCard weapon={w.value.w} key={w.id} />
         ))}
         {powersDivider}
         {powers.map((p) => (
-          <PsychicPowerCard power={p} />
+          <PsychicPowerCard power={p.value.p} key={p.id}/>
         ))}
       </ScrollView>
     </View>

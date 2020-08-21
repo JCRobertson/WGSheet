@@ -21,7 +21,7 @@ export default function WeaponCard(props) {
     props.weapon.rangeLong,
   ];
   return (
-    <TouchableOpacity>
+    <TouchableOpacity key={props.myKey}>
       <DarkCard>
         <TitleText>{props.weapon.name}</TitleText>
         <Table style={styles.table}>

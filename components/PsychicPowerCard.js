@@ -12,7 +12,7 @@ export default function PsychicPowerCard(props) {
   const header2 = [ "Target", "Effect"];
   const row2 = [power.target, power.effect];
   return (
-    <TouchableOpacity>
+    <TouchableOpacity key={props.myKey}>
       <DarkCard>
       <TitleText>{power.name}</TitleText>
         <Table style={styles.table}>
