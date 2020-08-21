@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import Colors from "../constants/Colors";
-import { Card, Button } from "react-native-elements";
+import { Card, Divider } from "react-native-elements";
 import WeaponCard from "../components/WeaponCard";
 import MainButton from "../components/MainButton";
+import PsychicPowerCard from "../components/PsychicPowerCard";
 
 export default function CombatScreen(props) {
   const uuid = require("uuid");
@@ -11,6 +12,11 @@ export default function CombatScreen(props) {
     id: uuid(),
     value: { w },
   }));
+  let powers = props.character.psychicPowers;
+  let powersDivider;
+  if (powers) {
+    powersDivider = <Divider style={styles.divider}/>;
+  }
 
   return (
     <View style={styles.screen}>
@@ -24,6 +30,10 @@ export default function CombatScreen(props) {
         </Card>
         {weapons.map((w) => (
           <WeaponCard weapon={w.value.w} myKey={w.id} />
+        ))}
+        {powersDivider}
+        {powers.map((p) => (
+           <PsychicPowerCard power={p} />
         ))}
       </ScrollView>
     </View>
@@ -57,6 +67,21 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   button: {
-      color: Colors.foreground
+    color: Colors.foreground,
+  },
+  divider: {
+      marginTop: 30,
+      marginBottom: 5,
+      backgroundColor: 'black',
+      height: 1,
+      shadowRadius: 5,
+    shadowOffset: {
+      height: 3,
+      width: 0,
+    },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    elevation: 5,
+    width: '100%'
   }
 });

@@ -108,13 +108,13 @@ const characters = [
     ],
     psychicPowers: [
       {
-        name: "Smite",
-        dn: "3",
-        activation: {},
-        duration: {},
-        range: {},
-        target: {},
-        effect: "effect",
+        "name": "Smite",
+        "dn": "3",
+        "activation": "activation",
+        "duration": "duration",
+        "range": "range",
+        "target": "target",
+        "effect": "effect"
       },
     ],
     talents: [
@@ -217,13 +217,13 @@ const characters = [
     ],
     psychicPowers: [
       {
-        name: "Smite",
-        dn: "3",
-        activation: {},
-        duration: {},
-        range: {},
-        target: {},
-        effect: "effect",
+        "name": "Smite",
+        "dn": "3",
+        "activation": "activation",
+        "duration": "duration",
+        "range": "range",
+        "target": "target",
+        "effect": "effect"
       },
     ],
     talents: [

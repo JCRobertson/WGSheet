@@ -18,6 +18,16 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 5,
+    borderColor: "black",
+    borderWidth: 1,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 3,
+      width: 0,
+    },
+    shadowColor: "black",
+    shadowOpacity: 0.5,
+    elevation: 5,
   },
   buttonText: {
     color: "white",

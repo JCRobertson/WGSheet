@@ -13,7 +13,12 @@ const Tab = createBottomTabNavigator();
 
 const CharacterScreen = ({ route, navigation }) => {
   const { character } = route.params;
-  navigation.setOptions({ title: character.info.name });
+  navigation.setOptions({
+    title: character.info.name,
+    headerTitleStyle: {
+      fontFamily: "berry-rotunda",
+    },
+  });
   navigation.setOptions({
     headerRight: () => (
       <Button
@@ -72,7 +77,7 @@ const CharacterScreen = ({ route, navigation }) => {
           inactiveTintColor: "gray",
           style: {
             backgroundColor: Colors.secondary,
-            borderTopColor: "transparent"
+            borderTopColor: "transparent",
           },
         }}
       >

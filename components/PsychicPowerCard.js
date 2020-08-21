@@ -4,28 +4,22 @@ import { Card } from "react-native-elements";
 import Colors from "../constants/Colors";
 import { Table, Row } from "react-native-table-component";
 
-export default function WeaponCard(props) {
-  const header1 = ["Damage", "ED", "AP", "Salvo"];
-  const row1 = [
-    props.weapon.damage,
-    props.weapon.ed,
-    props.weapon.ap,
-    props.weapon.salvo,
-  ];
-  const header2 = ["Short", "Medium", "Long"];
-  const row2 = [
-    props.weapon.rangeShort,
-    props.weapon.rangeMedium,
-    props.weapon.rangeLong,
-  ];
+export default function PsychicPowerCard(props) {
+  let power = props.power;
+  const header1 = ["DN", "Activation", "Duration", "Range",];
+  const row1 = [power.dn, power.activation, power.duration, power.range,];
+  const header2 = [ "Target", "Effect"];
+  const row2 = [power.target, power.effect];
   return (
     <TouchableOpacity>
-      <View style={styles.weaponName} key={props.key}>
-        <Text style={styles.weaponNameText}>{props.weapon.name}</Text>
+      <View style={styles.powerName} key={props.key}>
+        <Text style={styles.powerNameText}>{power.name}</Text>
       </View>
       <Card containerStyle={styles.card}>
         <Table style={styles.table}>
           <Row
+            adjustsFontSizeToFit  
+            numberOfLines={1}
             data={header1}
             textStyle={styles.headerText}
             style={styles.header}
@@ -39,11 +33,6 @@ export default function WeaponCard(props) {
           />
         </Table>
         <Table style={styles.table}>
-          <Row
-            data={["Range"]}
-            textStyle={styles.headerText}
-            style={styles.header}
-          />
           <Row
             data={header2}
             textStyle={styles.headerText}
@@ -94,10 +83,10 @@ const styles = StyleSheet.create({
     margin: 10,
     textAlign: "center",
   },
-  weaponName: {
+  powerName: {
     justifyContent: "center",
   },
-  weaponNameText: {
+  powerNameText: {
     textAlign: "center",
     color: "white",
     fontWeight: "bold",
