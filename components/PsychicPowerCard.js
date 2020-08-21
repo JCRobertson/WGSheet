@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { Card } from "react-native-elements";
 import Colors from "../constants/Colors";
 import { Table, Row } from "react-native-table-component";
+import TitleText from "./TitleText";
+import DarkCard from "./DarkCard";
 
 export default function PsychicPowerCard(props) {
   let power = props.power;
@@ -12,10 +13,8 @@ export default function PsychicPowerCard(props) {
   const row2 = [power.target, power.effect];
   return (
     <TouchableOpacity>
-      <View style={styles.powerName} key={props.key}>
-        <Text style={styles.powerNameText}>{power.name}</Text>
-      </View>
-      <Card containerStyle={styles.card}>
+      <DarkCard>
+      <TitleText>{power.name}</TitleText>
         <Table style={styles.table}>
           <Row
             adjustsFontSizeToFit  
@@ -40,28 +39,12 @@ export default function PsychicPowerCard(props) {
           />
           <Row data={row2} textStyle={styles.rowText} style={styles.row} />
         </Table>
-      </Card>
+      </DarkCard>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: Colors.primary,
-    borderColor: "black",
-    shadowRadius: 5,
-    shadowOffset: {
-      height: 3,
-      width: 0,
-    },
-    shadowColor: "black",
-    shadowOpacity: 0.5,
-    elevation: 5,
-    borderRadius: 20,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    paddingBottom: 15,
-  },
   table: {
     alignItems: "center",
     justifyContent: "space-around",
@@ -82,15 +65,5 @@ const styles = StyleSheet.create({
     color: "white",
     margin: 10,
     textAlign: "center",
-  },
-  powerName: {
-    justifyContent: "center",
-  },
-  powerNameText: {
-    textAlign: "center",
-    color: "white",
-    fontWeight: "bold",
-    marginTop: 15,
-    fontSize: 20,
   },
 });

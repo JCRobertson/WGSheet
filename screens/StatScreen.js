@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import Colors from "../constants/Colors";
-import { Card, ListItem } from "react-native-elements";
 import AttributeCard from "../components/AttributeCard";
 import SkillListItem from "../components/SkillListItem";
+import DarkCard from "../components/DarkCard";
 
 export default function StatScreen(props) {
   let attributes = props.character.attributes;
@@ -11,10 +11,7 @@ export default function StatScreen(props) {
   return (
     <View style={styles.screen}>
       <ScrollView>
-        <Card
-          containerStyle={styles.attributes}
-          wrapperStyle={styles.attributesWrapper}
-        >
+        <DarkCard wrapperStyle={styles.attributesWrapper}>
           <AttributeCard title="Strength" text={attributes.strength} />
           <AttributeCard title="Toughness" text={attributes.toughness} />
           <AttributeCard title="Agility" text={attributes.agility} />
@@ -22,8 +19,8 @@ export default function StatScreen(props) {
           <AttributeCard title="Willpower" text={attributes.willpower} />
           <AttributeCard title="Intellect" text={attributes.intellect} />
           <AttributeCard title="Fellowship" text={attributes.fellowship} />
-        </Card>
-        <Card containerStyle={styles.attributes}>
+        </DarkCard>
+        <DarkCard>
           <SkillListItem title="Athletics" skillNumber={skills.athletics} keyNumber="0" />
           <SkillListItem title="Awareness" skillNumber={skills.awareness} keyNumber="1" />
           <SkillListItem title="Ballistic Skill" skillNumber={skills.ballisticSkill} keyNumber="2" />
@@ -42,7 +39,7 @@ export default function StatScreen(props) {
           <SkillListItem title="Survival" skillNumber={skills.survival} keyNumber="15" />
           <SkillListItem title="Tech Use" skillNumber={skills.techUse} keyNumber="16" />
           <SkillListItem title="Weapon Skill" skillNumber={skills.weaponSkill} keyNumber="17" />
-        </Card>
+        </DarkCard>
       </ScrollView>
     </View>
   );
@@ -52,22 +49,6 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: Colors.primary,
     flex: 1,
-  },
-  attributes: {
-    backgroundColor: Colors.primary,
-    borderColor: "black",
-    shadowRadius: 5,
-    shadowOffset: {
-      height: 3,
-      width: 0,
-    },
-    shadowColor: "black",
-    shadowOpacity: 0.5,
-    elevation: 5,
-    borderRadius: 20,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    paddingBottom: 15,
   },
   attributesWrapper: {
     flexDirection: "row",
