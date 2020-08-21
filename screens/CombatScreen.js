@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Text } from "react-native";
 import Colors from "../constants/Colors";
 import { Card, Divider } from "react-native-elements";
 import WeaponCard from "../components/WeaponCard";
@@ -15,7 +15,7 @@ export default function CombatScreen(props) {
   let powers = props.character.psychicPowers;
   let powersDivider;
   if (powers) {
-    powersDivider = <Divider style={styles.divider}/>;
+    powersDivider = <Divider style={styles.divider} />;
   }
 
   return (
@@ -25,15 +25,39 @@ export default function CombatScreen(props) {
           containerStyle={styles.healthContainer}
           wrapperStyle={styles.healthContainerWrapper}
         >
-          <MainButton title={"Wounds: " + props.character.traits.wounds} />
-          <MainButton title={"Shock: " + props.character.traits.shock} />
+          <View style={styles.buttonContainer}>
+            <MainButton
+              title={"Wounds: " + props.character.traits.wounds}
+              style={styles.button}
+            />
+            <MainButton
+              title={"Shock: " + props.character.traits.shock}
+              style={styles.button}
+            />
+          </View>
+          <View style={styles.traitContainer}>
+            <Text style={styles.title}>
+              {"Defense: " + props.character.traits.defense}
+            </Text>
+            <Text style={styles.title}>
+              {"Resilience: " + props.character.traits.resilience}
+            </Text>
+          </View>
+          <View style={styles.traitContainer2}>
+            <Text style={styles.title}>
+              {"Conviction: " + props.character.traits.conviction}
+            </Text>
+            <Text style={styles.title}>
+              {"Resolve: " + props.character.traits.resolve}
+            </Text>
+          </View>
         </Card>
         {weapons.map((w) => (
           <WeaponCard weapon={w.value.w} myKey={w.id} />
         ))}
         {powersDivider}
         {powers.map((p) => (
-           <PsychicPowerCard power={p} />
+          <PsychicPowerCard power={p} />
         ))}
       </ScrollView>
     </View>
@@ -62,19 +86,34 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   healthContainerWrapper: {
-    flexDirection: "row",
     justifyContent: "space-around",
     paddingTop: 10,
   },
   button: {
     color: Colors.foreground,
+    width: 150,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  traitContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingTop: 20,
+  },
+  traitContainer2: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingTop: 20,
+    paddingBottom: 5
   },
   divider: {
-      marginTop: 30,
-      marginBottom: 5,
-      backgroundColor: 'black',
-      height: 1,
-      shadowRadius: 5,
+    marginTop: 30,
+    marginBottom: 5,
+    backgroundColor: "black",
+    height: 1,
+    shadowRadius: 5,
     shadowOffset: {
       height: 3,
       width: 0,
@@ -82,6 +121,17 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.5,
     elevation: 5,
-    width: '100%'
-  }
+    width: "100%",
+  },
+  listItem: {
+    backgroundColor: Colors.primary,
+    alignContent: "space-around",
+  },
+  title: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+    width: 150,
+  },
 });
