@@ -24,8 +24,8 @@ export default function CombatScreen(props) {
 
   return (
     <View style={styles.screen}>
-      <ScrollView>
         <SurvivalCard traits={props.character.traits} />
+        <ScrollView style={styles.scroll}>
         <TitleText viewStyle={styles.titleView} textStyle={styles.titleText}>
           Weapons
         </TitleText>
@@ -56,4 +56,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  scroll: {
+      marginTop: 5
+  }
 });

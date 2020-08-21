@@ -17,6 +17,7 @@ const CharacterScreen = ({ route, navigation }) => {
     title: character.info.name,
     headerTitleStyle: {
       fontFamily: "berry-rotunda",
+      padding: 10,
     },
   });
   navigation.setOptions({
