@@ -1,16 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Card } from "react-native-elements";
 import Colors from "../constants/Colors";
-import {
-  Table,
-  TableWrapper,
-  Row,
-  Rows,
-  Col,
-  Cols,
-  Cell,
-} from "react-native-table-component";
+import { Table, Row } from "react-native-table-component";
 
 export default function WeaponCard(props) {
   const header1 = ["Damage", "ED", "AP", "Salvo"];
@@ -18,7 +10,7 @@ export default function WeaponCard(props) {
     props.weapon.damage,
     props.weapon.ed,
     props.weapon.ap,
-    props.weapon.salvo
+    props.weapon.salvo,
   ];
   const header2 = ["Short", "Medium", "Long"];
   const row2 = [
@@ -27,6 +19,10 @@ export default function WeaponCard(props) {
     props.weapon.rangeLong,
   ];
   return (
+      <TouchableOpacity>
+    <View style={styles.weaponName} key={props.key}>
+    <Text style={styles.weaponNameText}>{props.weapon.name}</Text>
+  </View>
     <Card containerStyle={styles.card}>
       <Table style={styles.table}>
         <Row
@@ -43,7 +39,7 @@ export default function WeaponCard(props) {
         />
       </Table>
       <Table style={styles.table}>
-      <Row
+        <Row
           data={["Range"]}
           textStyle={styles.headerText}
           style={styles.header}
@@ -56,6 +52,7 @@ export default function WeaponCard(props) {
         <Row data={row2} textStyle={styles.rowText} style={styles.row} />
       </Table>
     </Card>
+    </TouchableOpacity>
   );
 }
 
@@ -79,13 +76,13 @@ const styles = StyleSheet.create({
   table: {
     alignItems: "center",
     justifyContent: "space-around",
-    padding: 10
+    padding: 10,
   },
   headerText: {
     color: "white",
     fontWeight: "bold",
     margin: 10,
-    textAlign: "center"
+    textAlign: "center",
   },
   header: {
     backgroundColor: Colors.secondary,
@@ -95,6 +92,16 @@ const styles = StyleSheet.create({
   rowText: {
     color: "white",
     margin: 10,
-    textAlign: "center"
+    textAlign: "center",
+  },
+  weaponName: {
+    justifyContent: "center",
+  },
+  weaponNameText: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    marginTop: 15,
+    fontSize: 20,
   },
 });

@@ -5,7 +5,12 @@ import { Card, Button } from "react-native-elements";
 import WeaponCard from "../components/WeaponCard";
 
 export default function CombatScreen(props) {
-  let weapons = props.character.weapons;
+  const uuid = require("uuid");
+  let weapons = props.character.weapons.map((w) => ({
+    id: uuid(),
+    value: { w },
+  }));
+
   return (
     <View style={styles.screen}>
       <ScrollView>
@@ -16,14 +21,9 @@ export default function CombatScreen(props) {
           <Button title={"Wounds: " + props.character.traits.wounds} />
           <Button title={"Shock: " + props.character.traits.shock} />
         </Card>
-        <View style={styles.weaponName}>
-          <Text style={styles.weaponNameText}>{weapons[0].name}</Text>
-        </View>
-        <WeaponCard weapon={weapons[0]} />
-        <View style={styles.weaponName}>
-          <Text style={styles.weaponNameText}>{weapons[1].name}</Text>
-        </View>
-        <WeaponCard weapon={weapons[1]} />
+        {weapons.map((w) => (
+          <WeaponCard weapon={w.value.w} myKey={w.id} />
+        ))}
       </ScrollView>
     </View>
   );
@@ -49,16 +49,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 5,
     paddingBottom: 15,
-  },
-  weaponName: {
-    justifyContent: "center",
-  },
-  weaponNameText: {
-    textAlign: "center",
-    color: "white",
-    fontWeight: "bold",
-    marginTop: 15,
-    fontSize: 20,
   },
   healthContainerWrapper: {
     flexDirection: "row",
