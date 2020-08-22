@@ -228,10 +228,10 @@ export const CharacterProvider = (props) => {
   ]);
   const [selectedCharacter, setSelectedCharacter] = useState(-1);
 
-  const setCharacter = (character, id) => {
+  const setCharacter = (character) => {
     let tempCharacters = characters;
     for (var i in tempCharacters) {
-      if (tempCharacters[i].id === id) {
+      if (tempCharacters[i].id === selectedCharacter) {
         tempCharacters[i] = character;
         break;
       }

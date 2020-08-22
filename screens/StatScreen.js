@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import Colors from "../constants/Colors";
 import AttributeCard from "../components/AttributeCard";
 import SkillListItem from "../components/SkillListItem";
 import DarkCard from "../components/DarkCard";
+import { MyContext } from '../components/MyContext'
 
-export default function StatScreen(props) {
-  let attributes = props.character.attributes;
-  let skills = props.character.skills;
+export default function StatScreen() {
+  const context = useContext(MyContext)
+  let character = context.characters[context.selectedCharacter]
+  let attributes = character.attributes;
+  let skills = character.skills;
   return (
     <View style={styles.screen}>
       <ScrollView>

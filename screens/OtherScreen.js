@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import DarkCard from "../components/DarkCard";
 import TitleText from "../components/TitleText";
@@ -7,27 +7,24 @@ import TraitCard from "../components/TraitCard";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MyContext } from "../components/MyContext";
 
-export default function OtherScreen(props) {
-  let context = React.useContext(MyContext);
-  let traits = context.characters[0].traits;
-  let info = props.character.info;
-  let talents = props.character.talents;
+export default function OtherScreen() {
+  const context = useContext(MyContext);
+  let character = context.characters[context.selectedCharacter];
+  let traits = character.traits;
+  let info = character.info;
+  let talents = character.talents;
   return (
     <View style={styles.screen}>
       <TraitCard traits={traits} />
       <TouchableOpacity>
         <DarkCard>
           <TitleText>Talents</TitleText>
-          <Text style={styles.detailText}>
-            {context.characters[0].talents[0].name}
-          </Text>
+          <Text style={styles.detailText}>{talents[0].name}</Text>
         </DarkCard>
       </TouchableOpacity>
       <DarkCard>
         <TitleText>Notes</TitleText>
-        <Text style={styles.detailText}>
-          {context.characters[0].info.notes}
-        </Text>
+        <Text style={styles.detailText}>{info.notes}</Text>
       </DarkCard>
     </View>
   );

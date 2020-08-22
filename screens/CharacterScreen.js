@@ -8,13 +8,12 @@ import OtherScreen from "./OtherScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "react-native-elements";
 import Colors from "../constants/Colors";
-import { MyContext } from '../components/MyContext'
+import { MyContext } from "../components/MyContext";
 
 const Tab = createBottomTabNavigator();
 
-const CharacterScreen = ({ route, navigation }) => {
-  //const { character } = route.params;
-  const context = useContext(MyContext)
+const CharacterScreen = ({ navigation }) => {
+  const context = useContext(MyContext);
   const character = context.characters[context.selectedCharacter];
   navigation.setOptions({
     title: character.info.name,
@@ -43,7 +42,7 @@ const CharacterScreen = ({ route, navigation }) => {
     <NavigationContainer independent={true}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({ color, size }) => {
             let iconName;
 
             if (route.name === "Stats") {
@@ -85,18 +84,9 @@ const CharacterScreen = ({ route, navigation }) => {
           },
         }}
       >
-        <Tab.Screen
-          name="Stats"
-          children={() => <StatScreen character={character} />}
-        />
-        <Tab.Screen
-          name="Combat"
-          children={() => <CombatScreen character={character} />}
-        />
-        <Tab.Screen
-          name="Other"
-          children={() => <OtherScreen character={character} />}
-        />
+        <Tab.Screen name="Stats" component={StatScreen} />
+        <Tab.Screen name="Combat" component={CombatScreen} />
+        <Tab.Screen name="Other" component={OtherScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

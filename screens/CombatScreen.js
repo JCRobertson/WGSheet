@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import Colors from "../constants/Colors";
 import WeaponCard from "../components/WeaponCard";
 import PsychicPowerCard from "../components/PsychicPowerCard";
 import TitleText from "../components/TitleText";
 import SurvivalCard from "../components/SurvivalCard";
+import { MyContext } from '../components/MyContext'
 
-export default function CombatScreen(props) {
+
+export default function CombatScreen() {
   const uuid = require("uuid");
-  let weapons = props.character.weapons.map((w) => ({
+  const context = useContext(MyContext)
+  let character = context.characters[context.selectedCharacter]
+  let weapons = character.weapons.map((w) => ({
     id: uuid(),
     value: { w },
   }));
-  let powers = props.character.psychicPowers.map((p) => ({
+  let powers = character.psychicPowers.map((p) => ({
     id: uuid(),
     value: { p },
   }));
@@ -27,7 +31,7 @@ export default function CombatScreen(props) {
 
   return (
     <View style={styles.screen}>
-        <SurvivalCard traits={props.character.traits} />
+        <SurvivalCard traits={character.traits} />
         <ScrollView style={styles.scroll}>
         <TitleText viewStyle={styles.titleView} textStyle={styles.titleText}>
           Weapons

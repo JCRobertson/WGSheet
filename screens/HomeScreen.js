@@ -67,7 +67,7 @@ const HomeScreen = (props) => {
       <FlatList
         style={styles.listContainer}
         keyExtractor={keyExtractor}
-        data={props.characters}
+        data={context.characters}
         renderItem={(item) => renderItem(item, props, context.setSelectedCharacter)}
       />
     </View>
