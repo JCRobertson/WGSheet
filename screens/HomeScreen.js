@@ -4,6 +4,7 @@ import { ListItem, Button } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 import { MyContext } from "../components/MyContext";
+import AddCharacterModal from "../components/AddCharacterModal";
 
 const keyExtractor = (item, index) => index.toString();
 
@@ -42,7 +43,7 @@ const HomeScreen = (props) => {
     headerRight: () => (
       <Button
         style={styles.addButton}
-        onPress={() => alert("This is a button!")}
+        onPress={() => props.navigation.navigate("Modal")}
         icon={
           <MaterialCommunityIcons name="account-plus" size={24} color="white" />
         }
@@ -52,18 +53,6 @@ const HomeScreen = (props) => {
   });
   return (
     <View style={styles.listContainer}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={addCharacterVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
-      >
-        <View>
-          <Text>In Modal</Text>
-        </View>
-      </Modal>
       <FlatList
         style={styles.listContainer}
         keyExtractor={keyExtractor}
