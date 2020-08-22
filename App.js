@@ -8,6 +8,7 @@ import CharacterScreen from "./screens/CharacterScreen";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 import Colors from "./constants/Colors";
+import { CharacterProvider } from './components/MyContext'
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -15,8 +16,11 @@ const fetchFonts = () => {
   });
 };
 
+const Stack = createStackNavigator();
+
 const characters = [
   {
+    id: "1",
     info: {
       name: "James",
       tier: 1,
@@ -77,7 +81,7 @@ const characters = [
     },
     armor: [
       {
-        name: "Rasrius",
+        name: "Rosarius",
         ar: 5,
         traits: "traits",
       },
@@ -126,6 +130,7 @@ const characters = [
     ],
   },
   {
+    id: "2",
     info: {
       name: "Ralk",
       tier: 1,
@@ -186,7 +191,7 @@ const characters = [
     },
     armor: [
       {
-        name: "Rasrius",
+        name: "Rosarius",
         ar: 5,
         traits: "traits",
       },
@@ -236,8 +241,6 @@ const characters = [
   },
 ];
 
-const Stack = createStackNavigator();
-
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
 
@@ -252,33 +255,35 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          options={{
-            headerStyle: {
-              backgroundColor: Colors.secondary,
-              shadowColor: "transparent",
-            },
-            headerTintColor: "#fff",
-          }}
-        >
-          {(props) => <HomeScreen {...props} characters={characters} />}
-        </Stack.Screen>
-        <Stack.Screen
-          name="Character"
-          component={CharacterScreen}
-          options={{
-            headerStyle: {
-              backgroundColor: Colors.secondary,
-              shadowColor: "transparent",
-            },
-            headerTintColor: "#fff",
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <CharacterProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Characters"
+            options={{
+              headerStyle: {
+                backgroundColor: Colors.secondary,
+                shadowColor: "transparent",
+              },
+              headerTintColor: "#fff",
+            }}
+          >
+            {(props) => <HomeScreen {...props} characters={characters} />}
+          </Stack.Screen>
+          <Stack.Screen
+            name="Character"
+            component={CharacterScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: Colors.secondary,
+                shadowColor: "transparent",
+              },
+              headerTintColor: "#fff",
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CharacterProvider>
   );
 }
 

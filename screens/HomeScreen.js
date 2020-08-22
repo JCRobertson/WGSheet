@@ -1,34 +1,43 @@
-import React from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, FlatList, Modal } from "react-native";
 import { ListItem, Button } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Colors from '../constants/Colors'
+import Colors from "../constants/Colors";
+import { MyContext } from "../components/MyContext";
 
 const keyExtractor = (item, index) => index.toString();
 
-const renderItem = ({ item }, props) => (
-  <ListItem
-    containerStyle={styles.listItem}
-    titleStyle={styles.listTitleStyle}
-    underlayColor="#4d4647"
-    activeOpacity=".7"
-    title={item.info.name}
-    subtitle={
-      <View style={styles.subtitleView}>
-        <Text style={styles.subtitleText}>
-          Tier: {item.info.tier} | Rank: {item.info.rank}
-        </Text>
-        <Text style={styles.subtitleText}>
-          {item.info.species} - {item.info.faction} {item.info.archetype}
-        </Text>
-      </View>
-    }
-    onPress={() => props.navigation.navigate("Character", { character: item })}
-    chevron
-  />
-);
+const renderItem = ({ item }, props, setSelectedCharacter) => {
+  return (
+    <ListItem
+      containerStyle={styles.listItem}
+      titleStyle={styles.listTitleStyle}
+      underlayColor="#4d4647"
+      activeOpacity=".7"
+      title={item.info.name}
+      subtitle={
+        <View style={styles.subtitleView}>
+          <Text style={styles.subtitleText}>
+            Tier: {item.info.tier} | Rank: {item.info.rank}
+          </Text>
+          <Text style={styles.subtitleText}>
+            {item.info.species} - {item.info.faction} {item.info.archetype}
+          </Text>
+        </View>
+      }
+      onPress={() => {
+        setSelectedCharacter(item.id);
+        console.log("id is "+item.id)
+        return props.navigation.navigate("Character");
+      }}
+      chevron
+    />
+  );
+};
 
 const HomeScreen = (props) => {
+  const [addCharacterVisible, setAddCharacterVisible] = useState(false);
+  const context = React.useContext(MyContext);
   props.navigation.setOptions({
     headerRight: () => (
       <Button
@@ -43,11 +52,23 @@ const HomeScreen = (props) => {
   });
   return (
     <View style={styles.listContainer}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={addCharacterVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        <View>
+          <Text>In Modal</Text>
+        </View>
+      </Modal>
       <FlatList
         style={styles.listContainer}
         keyExtractor={keyExtractor}
         data={props.characters}
-        renderItem={(item) => renderItem(item, props)}
+        renderItem={(item) => renderItem(item, props, context.setSelectedCharacter)}
       />
     </View>
   );

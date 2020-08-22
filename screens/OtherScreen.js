@@ -1,25 +1,34 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import DarkCard from "../components/DarkCard";
+import TitleText from "../components/TitleText";
 import Colors from "../constants/Colors";
-import { Card } from "react-native-elements";
+import TraitCard from "../components/TraitCard";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { MyContext } from "../components/MyContext";
 
-export default function OtherScreen() {
+export default function OtherScreen(props) {
+  let context = React.useContext(MyContext);
+  let traits = context.characters[0].traits;
+  let info = props.character.info;
+  let talents = props.character.talents;
   return (
     <View style={styles.screen}>
-      <View style={styles.titleName} >
-        <Text style={styles.titleText}>Talents</Text>
-      </View>
-      <Card
-        containerStyle={styles.Container}
-        wrapperStyle={styles.talentContainerWrapper}
-      ></Card>
-      <View style={styles.titleName} >
-        <Text style={styles.titleText}>Notes</Text>
-      </View>
-      <Card
-        containerStyle={styles.Container}
-        wrapperStyle={styles.talentContainerWrapper}
-      ></Card>
+      <TraitCard traits={traits} />
+      <TouchableOpacity>
+        <DarkCard>
+          <TitleText>Talents</TitleText>
+          <Text style={styles.detailText}>
+            {context.characters[0].talents[0].name}
+          </Text>
+        </DarkCard>
+      </TouchableOpacity>
+      <DarkCard>
+        <TitleText>Notes</TitleText>
+        <Text style={styles.detailText}>
+          {context.characters[0].info.notes}
+        </Text>
+      </DarkCard>
     </View>
   );
 }
@@ -29,30 +38,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     flex: 1,
   },
-  Container: {
-    backgroundColor: Colors.primary,
-    borderColor: "black",
-    shadowRadius: 5,
-    shadowOffset: {
-      height: 3,
-      width: 0,
-    },
-    shadowColor: "black",
-    shadowOpacity: 0.5,
-    elevation: 5,
-    borderRadius: 20,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
-    paddingBottom: 15,
-  },
-  title: {
-    justifyContent: "center",
-  },
-  titleText: {
-    textAlign: "center",
+  detailText: {
     color: "white",
-    fontWeight: "bold",
-    marginTop: 15,
-    fontSize: 20,
+    margin: 15,
+    fontSize: 15,
   },
 });

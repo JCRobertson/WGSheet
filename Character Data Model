@@ -103,6 +103,7 @@ characters [0]
 {
   "characters": [
     {
+      "id": "1",
       "info": {
         "name": "James",
         "tier": 1,

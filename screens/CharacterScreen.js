@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -8,11 +8,14 @@ import OtherScreen from "./OtherScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "react-native-elements";
 import Colors from "../constants/Colors";
+import { MyContext } from '../components/MyContext'
 
 const Tab = createBottomTabNavigator();
 
 const CharacterScreen = ({ route, navigation }) => {
-  const { character } = route.params;
+  //const { character } = route.params;
+  const context = useContext(MyContext)
+  const character = context.characters[context.selectedCharacter];
   navigation.setOptions({
     title: character.info.name,
     headerTitleStyle: {
